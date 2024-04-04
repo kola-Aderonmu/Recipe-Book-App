@@ -1,5 +1,7 @@
 const API_KEY = "0ba04ae237d64f68a66cc5ba276c37b7";
 const recipeListEl = document.getElementById("recipe-list");
+const paginationLinks = document.querySelectorAll("#pagination a");
+
 
 function displayRecipes(recipes) {
   recipeListEl.innerHTML = "";
@@ -50,3 +52,15 @@ async function init() {
 }
 
 init();
+
+
+  
+
+  // Attach click event listener to each pagination link
+  paginationLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevent default link behavior
+      const pageUrl = event.target.getAttribute('href'); // Get the page URL
+      window.location.href = pageUrl; // Redirect to the clicked page URL, refreshing the page
+    });
+  });
